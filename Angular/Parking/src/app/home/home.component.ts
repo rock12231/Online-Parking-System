@@ -12,7 +12,7 @@ import { Database, set, ref, getDatabase, get, child, onValue, off, push, remove
 
 
 export class HomeComponent implements OnInit {
-  data: any
+  data:any = {}
   showInput: boolean = false
   showSlot: boolean = true
   dataKey: any
