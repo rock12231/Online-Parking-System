@@ -106,6 +106,23 @@ export class HomeComponent implements OnInit {
       cost: 10,
       time: Date().toString(),
     })
+
+      const getCurrentTime = (): number => {
+      const date = new Date();
+      return date.getTime();
+    };
+    
+    const time: number = getCurrentTime();
+    console.log(time);
+
+    set(ref(getDatabase(), 'parkingdataHistory/'+ carnum +'/'+ time), {
+      username: user,
+      slot: this.slot,
+      carnum: carnum,
+      status: "bg-light",
+      cost: 10,
+      time: Date().toString(),
+    })
     // .then(() => {
     //   // Data saved successfully!
     //   this.showInput = false
@@ -161,6 +178,13 @@ export class HomeComponent implements OnInit {
   //   this.itemRef.remove();
   // }
 
-  ngOnInit() { }
+  ngOnInit() { 
+    // const getCurrentTime = (): number => {
+    //   const date = new Date();
+    //   return date.getTime();
+    // };
+    // const time: number = getCurrentTime();
+    // console.log(time);
+  }
 
 }
