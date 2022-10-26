@@ -1,0 +1,59 @@
+<h1 class="d-flex justify-content-center bg-primary text-warning p-3 mb-5">Online Parking</h1>
+
+<div *ngIf="showInput" class="row">
+    <div class="col-2"></div>
+    <div class="col-8">
+        <div class="input-group">
+            <input type="text" #username placeholder="Your Name" aria-label="Your Name" class="form-control">
+            <input type="text" #carnum placeholder="Last 6 Digit Of Your Car Number" class="form-control">
+            <button class="input-group-text btn-success" (click)="savUserdata(username.value,carnum.value)"> Book Now </button>
+        </div>
+    </div>
+    <div class="col-2"></div>
+</div>
+
+<div *ngIf="showSlot">
+    <div class="text-warning border border-1 d-flex justify-content-center">
+        <div class="row border">
+            <div [ngClass]="data.Parking1" class="col-4 border py-2" (click)="book(data.Parking1,1)">
+                <div *ngIf="data.Parking1 == 'bg-danger'">Booked</div>
+                <div *ngIf="data.Parking1 == 'bg-success'">Aavailable</div>
+                <div *ngIf="data.Parking1 == 'bg-light'">Occupied</div>
+            </div>
+            <div [ngClass]="data.Parking2" class="col-4 border py-2" (click)="book(data.Parking2,2)">
+                <div *ngIf="data.Parking2 == 'bg-danger'">Booked</div>
+                <div *ngIf="data.Parking2 == 'bg-success'">Aavailable</div>
+                <div *ngIf="data.Parking2 == 'bg-light'">Occupied</div>
+            </div>
+            <div [ngClass]="data.Parking3" class="col-4 border py-2" (click)="book(data.Parking3,3)">
+                <div *ngIf="data.Parking3 == 'bg-danger'">Booked</div>
+                <div *ngIf="data.Parking3 == 'bg-success'">Aavailable</div>
+                <div *ngIf="data.Parking3 == 'bg-light'">Occupied</div>
+            </div>
+        </div>
+    </div>
+    <div class="text-warning border border-1 d-flex justify-content-center">
+        <div class="row">
+            Road...
+        </div>
+    </div>
+    <div class="text-warning border border-1 d-flex justify-content-center">
+        <div class="row border">
+            <div [ngClass]="data.Parking4" class="col-4 border py-2" (click)="book(data.Parking4,4)">
+                <div *ngIf="data.Parking4 == 'bg-danger'">Booked</div>
+                <div *ngIf="data.Parking4 == 'bg-success'">Aavailable</div>
+                <div *ngIf="data.Parking4 == 'bg-light'">Occupied</div>
+            </div>
+            <div [ngClass]="data.Parking5" class="col-4 border py-2" (click)="book(data.Parking5,5)">
+                <div *ngIf="data.Parking5 == 'bg-danger'">Booked</div>
+                <div *ngIf="data.Parking5 == 'bg-success'">Aavailable</div>
+                <div *ngIf="data.Parking5 == 'bg-light'">Occupied</div>
+            </div>
+            <div [ngClass]="data.Parking6" class="col-4 border py-2" (click)="book(data.Parking6,6)">
+                <div *ngIf="data.Parking6 == 'bg-danger'">Booked</div>
+                <div *ngIf="data.Parking6 == 'bg-success'">Aavailable</div>
+                <div *ngIf="data.Parking6 == 'bg-light'">Occupied</div>
+            </div>
+        </div>
+    </div>
+</div>

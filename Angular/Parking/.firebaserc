@@ -1,0 +1,14 @@
+{
+  "targets": {
+    "parkingdata-cfe80": {
+      "hosting": {
+        "Parking": [
+          "parkingdata-cfe80"
+        ]
+      }
+    }
+  },
+  "projects": {
+    "default": "parkingdata-cfe80"
+  }
+}

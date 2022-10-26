@@ -1,0 +1,109 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
+
+    <script type="module">
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/9.12.1/firebase-app.js";
+        import { getAnalytics } from "https://www.gstatic.com/firebasejs/9.12.1/firebase-analytics.js";
+        import { getDatabase, get, ref, onValue, set, push } from "https://www.gstatic.com/firebasejs/9.12.1/firebase-database.js";
+
+        const firebaseConfig = {
+            apiKey: "AIzaSyADG7DqH1o8AB7-qB_gNKAWrk6ay1_ZP2M",
+            authDomain: "parkingdata-cfe80.firebaseapp.com",
+            databaseURL: "https://parkingdata-cfe80-default-rtdb.firebaseio.com",
+            projectId: "parkingdata-cfe80",
+            storageBucket: "parkingdata-cfe80.appspot.com",
+            messagingSenderId: "861697890764",
+            appId: "1:861697890764:web:6d9da1ed3141b612d6e569",
+            measurementId: "G-HJ4E3E1RE0"
+        };
+        const app = initializeApp(firebaseConfig);
+        const analytics = getAnalytics(app);
+
+        const database = getDatabase();
+        const dbref = ref(database, "/parkingdata");
+        onValue(dbref, (snapshot) => {
+            const data = snapshot.val();
+            console.log(data.car1);
+            console.log(data.car2);
+            console.log(data.car3);
+            console.log(data);
+            var ebg = "#0d6efd";
+            var fbg = "#000000";
+            data.car1 ? document.getElementById("car1").style.backgroundColor = fbg : document.getElementById("car1").style.backgroundColor = ebg;
+            data.car2 ? document.getElementById("car2").style.backgroundColor = fbg : document.getElementById("car2").style.backgroundColor = ebg;
+            data.car3 ? document.getElementById("car3").style.backgroundColor = fbg : document.getElementById("car3").style.backgroundColor = ebg;
+        });
+
+        await function myFunction() {
+            if (document.getElementById("username").value != '' && document.getElementById("carnum").value != '') {
+            var Name = document.getElementById("username").value;
+            var Carnum = document.getElementById("carnum").value;
+            Carnum = "Heeelooo";
+            set(ref(database, 'users/' + Carnum ), {
+                    Name: Name,
+                    Carnum: Carnum,
+                    Date: new Date().toString(),
+                    Cost: 10,
+                });
+            }
+        }
+    </script>
+    <title>Parking</title>
+</head>
+
+<body>
+    <h1 class="d-flex justify-content-center bg-primary text-warning p-3">Online Parking</h1>
+    <br>
+    <div class="row">
+        <div class="col-2"></div>
+        <div class="col-8">
+            <div class="input-group">
+                <input type="text" id="username" placeholder="Your Name" aria-label="Your Name" class="form-control">
+                <input type="text" id="carnum" placeholder="Last 6 Digit Of Your Car Number" class="form-control">
+                <button class="input-group-text btn-success" onclick="myFunction()"> Book Now </button>
+            </div>
+        </div>
+        <div class="col-2"></div>
+    </div>
+    <br>
+    <div class="text-warning border border-1 d-flex justify-content-center">
+        <div class="row border">
+            <div id="car1" class="col-4 border py-2">
+                Parking 1
+            </div>
+            <div id="car2" class="col-4 border py-2">
+                Parking 2
+            </div>
+            <div id="car3" class="col-4 border py-2">
+                Parking 3
+            </div>
+        </div>
+    </div>
+    <div class="text-warning border border-1 d-flex justify-content-center">
+        <div class="row">
+            Road
+        </div>
+    </div>
+    <div class="text-warning border border-1 d-flex justify-content-center">
+        <div class="row border">
+            <div id="car4" class="col-4 border py-2">
+                Parking 4
+            </div>
+            <div id="car5" class="col-4 border py-2">
+                Parking 5
+            </div>
+            <div id="car6" class="col-4 border py-2">
+                Parking 6
+            </div>
+        </div>
+    </div>
+
+</body>
+
+</html>
